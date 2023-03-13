@@ -38,8 +38,7 @@ class Main {
 	}
 
 	public static void geraSequenciaOmitindoImpares(int numero) {
-		while (numero < 100) {
-			numero++;
+		while (numero++ < 100) {
 			if (ehPar(numero)) {
 				System.out.println(numero);
 			}
