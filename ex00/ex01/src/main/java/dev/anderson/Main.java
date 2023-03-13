@@ -21,7 +21,6 @@ public class Main {
       } catch (NumberFormatException e) {
         System.out.println("Opção inválida");
       }
-
     }
   }
 

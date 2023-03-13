@@ -62,6 +62,7 @@ public class BookStore {
     System.out.println("***\tImposto por cada livro");
     System.out.println("***\tImposto ISS: " + (price * taxISS / 100));
     System.out.println("***\tImposto XLP: " + (price * taxXLP / 100));
+    System.out.println("***\tImposto SAH: " + (getTaxSAH(price)));
     System.out.print("***\tValor com impostos de cada livro é:");
     System.out.println(" R$ " + (price + (price * taxISS / 100) + (price * taxXLP / 100)));
   }
@@ -74,6 +75,9 @@ public class BookStore {
     for (Book book : books) {
       if (book.getTitle().equals(title)) {
         book.removeQuantity(quantity);
+        printTax(getBookPriceByTitle(title));
+        System.out.println(
+            "***\tValor total da venda: R$ " + (getBookPriceByTitle(title) * quantity));
       }
     }
     System.out.printf("***\t%d Livros com o título %s vendidos com sucesso.\n", quantity, title);
@@ -97,13 +101,18 @@ public class BookStore {
     System.out.println("***\tValor total em estoque: R$ " + total);
   }
 
-  private boolean containsTitle(String title) {
-    for (Book book : books) {
-      if (book.getTitle().equals(title)) {
-        return true;
-      }
+  private float getTaxSAH(float price) {
+    float SAH = 0;
+
+    if (price < 50.0) {
+      SAH = 5;
+      return price * SAH / 100;
+    } else if (price >= 50.0 && price < 150.0) {
+      SAH = 10;
+      return price * SAH / 100;
+    } else {
+      return price;
     }
-    return false;
   }
 
   private float getBookPriceByTitle(String title) {
