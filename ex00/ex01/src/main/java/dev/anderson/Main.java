@@ -30,7 +30,8 @@ public class Main {
     System.out.println("1 - Cadastrar um Livro");
     System.out.println("2 - Vender um Livro");
     System.out.println("3 - Imprimir Balanço");
-    System.out.println("4 - Sair");
+    System.out.println("4 - Alterar porcentagem dos impostos");
+    System.out.println("5 - Sair");
     System.out.print("Opção: ");
   }
 }

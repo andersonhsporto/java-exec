@@ -46,6 +46,9 @@ public class BookStore {
         printBalance();
         break;
       case 4:
+        taxReplaceOption(scanner);
+        break;
+      case 5:
         System.out.println("Obrigado por utilizar o Livraria P2");
         System.exit(0);
         break;
@@ -140,5 +143,13 @@ public class BookStore {
     } catch (IllegalArgumentException e) {
       System.out.println("***\tQuantidade indisponível");
     }
+  }
+
+  private void taxReplaceOption(Scanner scanner) {
+    System.out.println("Digite o novo valor do imposto ISS:");
+    taxISS = Integer.parseInt(scanner.nextLine());
+    System.out.println("Digite o novo valor do imposto XLP:");
+    taxXLP = Integer.parseInt(scanner.nextLine());
+    System.out.println("Impostos alterados com sucesso");
   }
 }
