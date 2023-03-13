@@ -111,7 +111,7 @@ public class BookStore {
       SAH = 10;
       return price * SAH / 100;
     } else {
-      return price;
+      return 0;
     }
   }
 
