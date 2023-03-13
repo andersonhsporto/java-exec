@@ -41,12 +41,19 @@ public class BookStore {
       case 1:
         System.out.println("Digite o título do livro:");
         title = scanner.nextLine();
-        System.out.println("Digite o preço do livro:");
-        float price = Float.parseFloat(scanner.nextLine());
         System.out.println("Digite a quantidade do livro:");
         quantity = Integer.parseInt(scanner.nextLine());
-        insertBook(title, price, quantity);
-        printInputBook(title, price, quantity);
+        if (contains(title)) {
+          System.out.println("***\tLivro já cadastrado");
+          float price = getBookPriceByTitle(title);
+          insertBook(title, price, quantity);
+          return;
+        } else {
+          System.out.println("Digite o preço do livro:");
+          float price = Float.parseFloat(scanner.nextLine());
+          insertBook(title, price, quantity);
+        }
+        printInputBook(title, getBookPriceByTitle(title), quantity);
         break;
       case 2:
         System.out.println("Digite o título do livro:");
@@ -111,6 +118,22 @@ public class BookStore {
     System.out.println("***\tValor total em estoque: R$ " + total);
   }
 
+  private boolean containsTitle(String title) {
+    for (Book book : books) {
+      if (book.getTitle().equals(title)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  private float getBookPriceByTitle(String title) {
+    for (Book book : books) {
+      if (book.getTitle().equals(title)) {
+        return book.getPrice();
+      }
+    }
+    return 0;
+  }
 
 
 
