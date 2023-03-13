@@ -32,15 +32,16 @@ class Main {
 	}
 
 	public static void geraSequencia(int numero) {
-		for (int i = numero + 1; i <= 100; i++) {
-			System.out.println(i);
+		while (numero < 100) {
+			System.out.println(++numero);
 		}
 	}
 
 	public static void geraSequenciaOmitindoImpares(int numero) {
-		for (int i = numero + 1; i <= 100; i++) {
-			if (ehPar(i)) {
-				System.out.println(i);
+		while (numero < 100) {
+			numero++;
+			if (ehPar(numero)) {
+				System.out.println(numero);
 			}
 		}
 	}
