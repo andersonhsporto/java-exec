@@ -35,36 +35,12 @@ public class BookStore {
   }
 
   public void options(int option, Scanner scanner) {
-    String title;
-    int quantity;
     switch (option) {
       case 1:
-        System.out.println("Digite o título do livro:");
-        title = scanner.nextLine();
-        System.out.println("Digite a quantidade do livro:");
-        quantity = Integer.parseInt(scanner.nextLine());
-        if (contains(title)) {
-          System.out.println("***\tLivro já cadastrado");
-          float price = getBookPriceByTitle(title);
-          insertBook(title, price, quantity);
-          return;
-        } else {
-          System.out.println("Digite o preço do livro:");
-          float price = Float.parseFloat(scanner.nextLine());
-          insertBook(title, price, quantity);
-        }
-        printInputBook(title, getBookPriceByTitle(title), quantity);
+        inputOption(scanner);
         break;
       case 2:
-        System.out.println("Digite o título do livro:");
-        title = scanner.nextLine();
-        System.out.println("Digite a quantidade do livro:");
-        quantity = Integer.parseInt(scanner.nextLine());
-        try {
-          sellBook(title, quantity);
-        } catch (IllegalArgumentException e) {
-          System.out.println("***\tQuantidade indisponível");
-        }
+        sellOption(scanner);
         break;
       case 3:
         printBalance();
@@ -126,6 +102,7 @@ public class BookStore {
     }
     return false;
   }
+
   private float getBookPriceByTitle(String title) {
     for (Book book : books) {
       if (book.getTitle().equals(title)) {
@@ -135,7 +112,33 @@ public class BookStore {
     return 0;
   }
 
+  private void inputOption(Scanner scanner) {
+    System.out.println("Digite o título do livro:");
+    String title = scanner.nextLine();
+    System.out.println("Digite a quantidade do livro:");
+    int quantity = Integer.parseInt(scanner.nextLine());
+    if (contains(title)) {
+      System.out.println("***\tLivro já cadastrado");
+      float price = getBookPriceByTitle(title);
+      insertBook(title, price, quantity);
+      return;
+    } else {
+      System.out.println("Digite o preço do livro:");
+      float price = Float.parseFloat(scanner.nextLine());
+      insertBook(title, price, quantity);
+    }
+    printInputBook(title, getBookPriceByTitle(title), quantity);
+  }
 
-
-
+  private void sellOption(Scanner scanner) {
+    System.out.println("Digite o título do livro:");
+    String title = scanner.nextLine();
+    System.out.println("Digite a quantidade do livro:");
+    int quantity = Integer.parseInt(scanner.nextLine());
+    try {
+      sellBook(title, quantity);
+    } catch (IllegalArgumentException e) {
+      System.out.println("***\tQuantidade indisponível");
+    }
+  }
 }

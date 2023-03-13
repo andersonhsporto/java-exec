@@ -3,8 +3,9 @@ package dev.anderson;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-      loopBookStore();
+
+  public static void main(String[] args) {
+    loopBookStore();
   }
 
   public static void loopBookStore() {
