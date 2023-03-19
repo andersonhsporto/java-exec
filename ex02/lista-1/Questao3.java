@@ -7,7 +7,7 @@ class Main {
     int N = sc.nextInt();
     int soma = 0;
     int produto = 1;
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++) {gagagagaga
       int numero = sc.nextInt();
       soma += numero;
       produto *= numero;
